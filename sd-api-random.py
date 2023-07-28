@@ -159,7 +159,6 @@ def main():
     all_models = get_models(config_models_dir)
     cur_ckpt = get_current_checkpoint()
 
-    # print(txt2img_payload)
     for rep in range(args.repeat):
         if args.usecurrent:
             beg = cur_ckpt.find("\\")
@@ -177,7 +176,6 @@ def main():
             print(f"=> Using Model: {random_model}")
             retry_request(url=f"{config_sd_url}/sdapi/v1/options", json=options_payload)
 
-        # rednered_images = []
         for _ in range(config_num_imgs_to_generate):
             random_line = read_random_line(args.file)
             txt2img_payload["prompt"] = random_line
